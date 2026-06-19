@@ -34,6 +34,7 @@
   --shadow-blue:0 10px 34px -8px var(--blue-glow);
   --shadow-card:0 8px 28px -12px rgba(0,0,0,.55);
   --font:'Montserrat',system-ui,sans-serif;
+    --os-pri:#e86c1a;--os-soft:#f5943a;--os-dim:#6b2d06;--os-glow:rgba(232,108,26,.38);--os-line:rgba(232,108,26,.35);--os-line-dim:rgba(245,148,58,.22);--os-paper:#fdf6ef;--hk-pri:#0891b2;--hk-soft:#22d3ee;--hk-dim:#0e3a47;--hk-glow:rgba(8,145,178,.4);--hk-line:rgba(8,145,178,.38);--hk-line-dim:rgba(34,211,238,.22);--hk-paper:#effafd;
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
@@ -341,6 +342,357 @@ footer{background:var(--bg-deep);border-top:1px solid var(--line);padding:56px 0
 .uc-dot{width:8px;height:8px;border-radius:99px;background:var(--muted-dark);border:0;cursor:pointer;transition:.3s;padding:0}
 .uc-dot.on{width:26px;background:var(--blue)}
 @media(max-width:640px){.uc-pair{grid-template-columns:1fr}}
+
+/* ═══ OFFICE & HOUSEKEEPING SECTIONS ═══ */
+/* ─── INHERIT EXISTING SITE TOKENS ─────────────────────────────────────────── */
+
+
+/* ─── SHARED REVEAL ANIMATIONS (matches existing site) ─────────────────────── */.rv.d2{transition-delay:.2s}.rv.d4{transition-delay:.4s}.rv.d5{transition-delay:.5s}
+
+/* ─── SHARED TYPE ───────────────────────────────────────────────────────────── */
+h2 strong,h3 strong{font-weight:800}
+
+/* ─── EYEBROW (orange variant) ──────────────────────────────────────────────── */
+.eyebrow-os{display:inline-flex;align-items:center;gap:9px;
+  font-size:.63rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--os-soft);margin-bottom:14px}
+.eyebrow-os::before{content:"";width:22px;height:1.5px;background:var(--os-pri);border-radius:2px}
+
+/* ─── EYEBROW (teal variant) ────────────────────────────────────────────────── */
+.eyebrow-hk{display:inline-flex;align-items:center;gap:9px;
+  font-size:.63rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--hk-soft);margin-bottom:14px}
+.eyebrow-hk::before{content:"";width:22px;height:1.5px;background:var(--hk-pri);border-radius:2px}
+
+
+/* ════════════════════════════════════════════════════════════════════════════
+   SECTION A1 — OFFICE SUPPLIES HERO
+   Dark bg, orange gradient glow, 2-col split
+   ════════════════════════════════════════════════════════════════════════════ */
+#office-hero{
+  background:var(--bg);
+  overflow:hidden;
+}
+#office-hero::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(700px 500px at 85% 10%, rgba(232,108,26,.14) 0%, transparent 65%),
+    radial-gradient(500px 400px at 5% 90%, rgba(232,108,26,.07) 0%, transparent 60%);
+  pointer-events:none;
+}
+.oh-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;position:relative;z-index:2}
+.oh-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(232,108,26,.12);
+  border:1px solid var(--os-line-dim);border-radius:99px;padding:6px 14px;
+  font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--os-soft);margin-bottom:18px}
+.oh-tag svg{width:13px;height:13px}
+.oh-grid h2{color:var(--white);margin-bottom:10px}
+.oh-grid .sub{color:var(--muted);margin-bottom:28px}
+.btn-os{display:inline-flex;align-items:center;gap:9px;font-weight:600;
+  font-size:.88rem;padding:13px 24px;border-radius:99px;cursor:pointer;
+  font-family:var(--font);letter-spacing:.01em;transition:.28s}
+.btn-os-pri{background:var(--os-pri);color:#fff;
+  box-shadow:0 10px 34px -8px var(--os-glow)}
+.btn-os-pri:hover{transform:translateY(-3px) scale(1.02);background:var(--os-soft);
+  box-shadow:0 16px 40px -8px rgba(245,148,58,.65)}
+.btn-os-sec{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.2)}
+.btn-os-sec:hover{border-color:var(--os-pri);color:var(--os-soft);
+  box-shadow:0 0 20px -6px var(--os-glow);transform:translateY(-3px)}
+
+/* Office hero stats */
+.oh-stats{display:flex;gap:28px;flex-wrap:wrap;margin-top:30px}
+.oh-stat{border-left:1.5px solid var(--os-line);padding-left:14px}
+.oh-stat b{display:block;font-size:1.3rem;color:#fff;font-weight:800}
+.oh-stat span{font-size:.72rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+
+/* Office hero visual — floating icon grid */
+.oh-visual{position:relative;height:360px;overflow:visible}
+.oh-card-main{
+  position:absolute;inset:0;
+  background:linear-gradient(140deg,rgba(232,108,26,.12) 0%,rgba(35,40,48,.8) 60%);
+  border:1px solid var(--os-line);border-radius:24px;overflow:hidden;
+  box-shadow:var(--shadow-lg),0 0 60px -20px rgba(232,108,26,.18);
+  display:grid;grid-template-columns:repeat(3,1fr);
+  grid-template-rows:repeat(3,1fr);gap:1px;
+  background-clip:padding-box;
+}
+.oh-icon-cell{
+  background:rgba(30,33,40,.9);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:6px;padding:14px 8px;
+  transition:.35s;position:relative;overflow:hidden;
+}
+.oh-icon-cell:hover{background:rgba(232,108,26,.14);transform:scale(1.04);z-index:2}
+.oh-icon-cell:hover .oh-cell-glow{opacity:1}
+.oh-cell-glow{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(232,108,26,.2),transparent 70%);opacity:0;transition:.35s;pointer-events:none}
+.oh-icon-cell svg{width:32px;height:32px;transition:.35s}
+.oh-icon-cell:hover svg{transform:scale(1.15)}
+.oh-icon-cell span{font-size:.64rem;font-weight:600;color:rgba(255,255,255,.75);text-align:center;letter-spacing:.04em;text-transform:uppercase;line-height:1.3}
+/* corner badge */
+.oh-badge{position:absolute;top:14px;right:14px;z-index:4;
+  background:var(--os-pri);color:#fff;font-size:.65rem;font-weight:700;
+  padding:5px 13px;border-radius:99px;letter-spacing:.06em;text-transform:uppercase;
+  box-shadow:0 8px 20px -6px var(--os-glow),0 0 0 1.5px rgba(255,255,255,.15);
+  animation:badgePop .6s .8s both cubic-bezier(.34,1.56,.64,1)}
+@keyframes badgePop{from{opacity:0;transform:translateY(10px) scale(.8)}to{opacity:1;transform:none}}
+@media(max-width:900px){.oh-grid{grid-template-columns:1fr}.oh-visual{height:300px}}
+
+
+/* ════════════════════════════════════════════════════════════════════════════
+   SECTION A2 — OFFICE SUPPLIES CATALOGUE (light/warm bg, product slider)
+   ════════════════════════════════════════════════════════════════════════════ */
+#office-catalogue{background:var(--os-paper)}
+#office-catalogue .wrap > h2{color:var(--ink)}
+#office-catalogue .wrap > h2 strong{color:var(--os-pri)}
+#office-catalogue .sub{color:#56606e}
+#office-catalogue .eyebrow-os{color:var(--os-pri)}
+#office-catalogue .eyebrow-os::before{background:var(--os-pri)}
+
+/* Category pills */
+.os-cats{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 32px}
+.os-cat-pill{padding:8px 18px;border-radius:99px;font-size:.78rem;font-weight:600;
+  border:1px solid rgba(232,108,26,.3);color:var(--os-pri);background:rgba(232,108,26,.07);
+  cursor:pointer;transition:.25s;letter-spacing:.02em}
+.os-cat-pill.active,.os-cat-pill:hover{background:var(--os-pri);color:#fff;
+  border-color:var(--os-pri);box-shadow:0 6px 20px -8px var(--os-glow)}
+
+/* OS product slider */
+.os-slider-wrap{position:relative;margin-top:8px;overflow:hidden}
+.os-slider-wrap::before,.os-slider-wrap::after{
+  content:"";position:absolute;top:0;bottom:0;width:80px;z-index:3;pointer-events:none}
+.os-slider-wrap::before{left:0;background:linear-gradient(90deg,var(--os-paper),transparent)}
+.os-slider-wrap::after{right:0;background:linear-gradient(-90deg,var(--os-paper),transparent)}
+.os-slider{display:flex;gap:18px;padding:6px 2px 28px;
+  animation:osScroll 38s linear infinite;width:max-content}
+.os-slider:hover{animation-play-state:paused}
+
+.os-card{flex:0 0 188px;background:#fff;border-radius:18px;overflow:hidden;
+  border:1px solid rgba(232,108,26,.15);
+  box-shadow:0 6px 24px -12px rgba(180,80,10,.14);transition:.35s}
+.os-card:hover{transform:translateY(-7px) scale(1.015);
+  box-shadow:0 22px 42px -12px rgba(232,108,26,.28);
+  border-color:rgba(232,108,26,.4)}
+.os-card-ico{height:150px;background:linear-gradient(135deg,#fff8f2,#fef0e4);
+  display:grid;place-items:center;position:relative;overflow:hidden}
+.os-card-ico::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 60%,rgba(232,108,26,.12),transparent 65%)}
+.os-card-ico svg{width:58px;height:58px;position:relative;z-index:1;transition:.5s}
+.os-card:hover .os-card-ico svg{transform:scale(1.1) rotate(-3deg)}
+.os-card-body{padding:11px 14px 14px}
+.os-card-body h3{font-size:.93rem;font-weight:600;color:var(--ink);margin-bottom:3px}
+.os-card-body p{font-size:.77rem;color:#6a7280;font-weight:300}
+.os-card-body .os-tag{display:inline-block;margin-top:9px;font-size:.62rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--os-pri);
+  background:rgba(232,108,26,.1);padding:3px 9px;border-radius:99px}
+
+@keyframes osScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+.os-client-card{background:#fff;border:1px solid rgba(232,108,26,.15);border-radius:var(--radius);
+  padding:14px 12px;text-align:center;transition:.3s;position:relative;overflow:hidden}
+.os-client-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--os-pri),var(--os-soft));
+  transform:scaleX(0);transform-origin:left;transition:.35s}
+.os-client-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px -12px rgba(232,108,26,.22)}
+.os-client-card:hover::before{transform:scaleX(1)}
+.os-client-card svg{width:32px;height:32px;margin:0 auto 9px;color:var(--os-pri)}
+.os-client-card h3{font-size:.85rem;font-weight:700;color:var(--ink);margin-bottom:3px}
+.os-client-card p{font-size:.74rem;color:#6a7280;font-weight:300;line-height:1.55}
+
+
+/* ════════════════════════════════════════════════════════════════════════════
+   SECTION B1 — HOUSEKEEPING HERO
+   Dark bg, teal gradient glow, 2-col split
+   ════════════════════════════════════════════════════════════════════════════ */
+#hk-hero{background:var(--bg-deep);overflow:hidden}
+#hk-hero::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(700px 480px at 80% 12%, rgba(8,145,178,.14) 0%, transparent 65%),
+    radial-gradient(500px 360px at 5% 88%, rgba(8,145,178,.08) 0%, transparent 60%),
+    radial-gradient(300px 300px at 50% 50%, rgba(34,211,238,.04) 0%, transparent 70%);
+  pointer-events:none;
+}
+.hk-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;position:relative;z-index:2}
+.hk-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(8,145,178,.12);
+  border:1px solid var(--hk-line-dim);border-radius:99px;padding:6px 14px;
+  font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--hk-soft);margin-bottom:18px}
+.hk-tag svg{width:13px;height:13px}
+.hk-grid h2{color:var(--white)}
+.hk-grid .sub{color:var(--muted);margin-bottom:28px}
+.btn-hk{display:inline-flex;align-items:center;gap:9px;font-weight:600;
+  font-size:.88rem;padding:13px 24px;border-radius:99px;cursor:pointer;
+  font-family:var(--font);letter-spacing:.01em;transition:.28s}
+.btn-hk-pri{background:var(--hk-pri);color:#fff;
+  box-shadow:0 10px 34px -8px var(--hk-glow)}
+.btn-hk-pri:hover{transform:translateY(-3px) scale(1.02);background:var(--hk-soft);color:var(--ink);
+  box-shadow:0 16px 40px -8px rgba(34,211,238,.55)}
+.btn-hk-sec{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.2)}
+.btn-hk-sec:hover{border-color:var(--hk-pri);color:var(--hk-soft);
+  box-shadow:0 0 20px -6px var(--hk-glow);transform:translateY(-3px)}
+
+.hk-stats{display:flex;gap:28px;flex-wrap:wrap;margin-top:30px}
+.hk-stat{border-left:1.5px solid var(--hk-line);padding-left:14px}
+.hk-stat b{display:block;font-size:1.3rem;color:#fff;font-weight:800}
+.hk-stat span{font-size:.72rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+
+/* HK hero visual — animated 3-ring diagram */
+.hk-visual{position:relative;height:420px;display:flex;align-items:center;justify-content:center}
+.hk-rings{position:relative;width:360px;height:360px}
+.hk-ring{position:absolute;border-radius:50%;border:1px solid;top:50%;left:50%;transform:translate(-50%,-50%)}
+.hk-ring-1{width:340px;height:340px;border-color:rgba(8,145,178,.18);
+  animation:ringRotate 30s linear infinite}
+.hk-ring-2{width:240px;height:240px;border-color:rgba(8,145,178,.28);
+  animation:ringRotate 20s linear infinite reverse}
+.hk-ring-3{width:140px;height:140px;border-color:rgba(34,211,238,.45);
+  background:radial-gradient(circle,rgba(8,145,178,.15),transparent 70%);
+  animation:ringRotate 14s linear infinite}
+.hk-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:80px;height:80px;border-radius:50%;
+  background:linear-gradient(135deg,var(--hk-pri),var(--hk-soft));
+  display:grid;place-items:center;
+  box-shadow:0 0 40px rgba(8,145,178,.6),0 0 0 12px rgba(8,145,178,.1),0 0 0 24px rgba(8,145,178,.05)}
+.hk-center svg{width:36px;height:36px;color:#fff}
+/* orbit nodes */
+.hk-node{position:absolute;width:54px;height:54px;border-radius:50%;
+  background:var(--panel);border:1px solid var(--hk-line);
+  display:grid;place-items:center;
+  box-shadow:0 6px 20px rgba(0,0,0,.4),0 0 20px -8px rgba(8,145,178,.4);
+  transition:.3s}
+.hk-node:hover{background:rgba(8,145,178,.2);transform:scale(1.15);
+  box-shadow:0 8px 28px rgba(8,145,178,.5)}
+.hk-node svg{width:24px;height:24px;color:var(--hk-soft)}
+/* position nodes around ring 1 */
+.hk-n1{top:5%;left:50%;transform:translateX(-50%)}
+.hk-n2{top:50%;right:3%;transform:translateY(-50%)}
+.hk-n3{bottom:5%;left:50%;transform:translateX(-50%)}
+.hk-n4{top:50%;left:3%;transform:translateY(-50%)}
+.hk-n5{top:18%;right:12%}
+.hk-n6{bottom:18%;left:12%}
+/* node labels */
+.hk-node-label{position:absolute;font-size:.6rem;font-weight:700;color:var(--hk-soft);
+  white-space:nowrap;letter-spacing:.06em;text-transform:uppercase;opacity:.8}
+.hk-n1 .hk-node-label{top:-20px;left:50%;transform:translateX(-50%)}
+.hk-n2 .hk-node-label{right:60px;top:50%;transform:translateY(-50%)}
+.hk-n3 .hk-node-label{bottom:-20px;left:50%;transform:translateX(-50%)}
+.hk-n4 .hk-node-label{left:60px;top:50%;transform:translateY(-50%)}
+.hk-n5 .hk-node-label{top:-18px;right:0}
+.hk-n6 .hk-node-label{bottom:-18px;left:0}
+@keyframes ringRotate{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.hk-ring{animation:none}}
+@media(max-width:900px){.hk-grid{grid-template-columns:1fr}.hk-visual{height:320px}.hk-rings{width:290px;height:290px}.hk-ring-1{width:270px;height:270px}.hk-ring-2{width:190px;height:190px}.hk-ring-3{width:110px;height:110px}}
+
+
+/* ════════════════════════════════════════════════════════════════════════════
+   SECTION B2 — HOUSEKEEPING CATALOGUE (cool tint bg, product slider)
+   ════════════════════════════════════════════════════════════════════════════ */
+#hk-catalogue{background:var(--hk-paper)}
+#hk-catalogue .wrap > h2{color:var(--ink)}
+#hk-catalogue .wrap > h2 strong{color:var(--hk-pri)}
+#hk-catalogue .sub{color:#3d5a62}
+
+/* HK product slider */
+.hk-slider-wrap{position:relative;overflow:hidden;margin-top:30px}
+.hk-slider-wrap::before,.hk-slider-wrap::after{
+  content:"";position:absolute;top:0;bottom:0;width:80px;z-index:3;pointer-events:none}
+.hk-slider-wrap::before{left:0;background:linear-gradient(90deg,var(--hk-paper),transparent)}
+.hk-slider-wrap::after{right:0;background:linear-gradient(-90deg,var(--hk-paper),transparent)}
+.hk-slider{display:flex;gap:18px;padding:6px 2px 28px;
+  animation:hkScroll 42s linear infinite;width:max-content}
+.hk-slider:hover{animation-play-state:paused}
+@keyframes hkScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+.hk-card{flex:0 0 188px;background:#fff;border-radius:18px;overflow:hidden;
+  border:1px solid rgba(8,145,178,.15);
+  box-shadow:0 6px 24px -12px rgba(8,100,130,.14);transition:.35s}
+.hk-card:hover{transform:translateY(-7px) scale(1.015);
+  box-shadow:0 22px 42px -12px rgba(8,145,178,.3);
+  border-color:rgba(8,145,178,.45)}
+.hk-card-ico{height:150px;background:linear-gradient(135deg,#f0fafd,#e0f5fb);
+  display:grid;place-items:center;position:relative;overflow:hidden}
+.hk-card-ico::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 60%,rgba(8,145,178,.14),transparent 65%)}
+.hk-card-ico svg{width:58px;height:58px;position:relative;z-index:1;transition:.5s}
+.hk-card:hover .hk-card-ico svg{transform:scale(1.1) rotate(3deg)}
+.hk-card-body{padding:11px 14px 14px}
+.hk-card-body h3{font-size:.93rem;font-weight:600;color:var(--ink);margin-bottom:3px}
+.hk-card-body p{font-size:.77rem;color:#6a7280;font-weight:300}
+.hk-card-body .hk-tag-pill{display:inline-block;margin-top:9px;font-size:.62rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--hk-pri);
+  background:rgba(8,145,178,.1);padding:3px 9px;border-radius:99px}
+
+/* hk-feat used in slider pages */
+.hk-feat{background:#fff;border:1px solid rgba(8,145,178,.15);border-radius:var(--radius);
+  padding:18px 16px;transition:.35s;position:relative;overflow:hidden}
+.hk-feat::after{content:"";position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--hk-pri),var(--hk-soft));
+  transform:scaleX(0);transform-origin:left;transition:.35s}
+.hk-feat:hover{transform:translateY(-6px);
+  box-shadow:0 14px 38px -12px rgba(8,145,178,.22)}
+.hk-feat:hover::after{transform:scaleX(1)}
+.hk-feat-icon{width:44px;height:44px;border-radius:12px;
+  background:linear-gradient(135deg,rgba(8,145,178,.12),rgba(8,145,178,.06));
+  border:1px solid var(--hk-line-dim);display:grid;place-items:center;
+  margin-bottom:14px}
+.hk-feat-icon svg{width:24px;height:24px;color:var(--hk-pri)}
+.hk-feat h3{font-size:.93rem;font-weight:700;color:var(--ink);margin-bottom:6px}
+.hk-feat p{font-size:.8rem;color:#56626a;font-weight:300;line-height:1.7}
+@media(max-width:900px){.hk-feat-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:580px){.hk-feat-grid{grid-template-columns:1fr}}
+
+/* ─── SHARED DIVIDER BETWEEN SECTIONS ──────────────────────────────────────── */
+.section-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);margin:0}
+
+/* ─── SHARED CTA STRIP ──────────────────────────────────────────────────────── */
+.cta-strip{padding:52px 0;text-align:center;position:relative;overflow:hidden}
+.cta-strip-os{background:linear-gradient(135deg,rgba(232,108,26,.16) 0%,rgba(232,108,26,.04) 50%,transparent 100%),var(--bg)}
+.cta-strip-hk{background:linear-gradient(135deg,rgba(8,145,178,.16) 0%,rgba(8,145,178,.04) 50%,transparent 100%),var(--bg-deep)}
+.cta-strip h3{font-size:clamp(1.3rem,2.8vw,1.9rem);color:var(--white);margin-bottom:10px;font-weight:300}
+.cta-strip h3 strong{font-weight:800}
+.cta-strip p{color:var(--muted);font-size:.9rem;margin-bottom:26px;font-weight:300}
+.cta-strip-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+
+/* ── OS Who We Supply slider ─────────────────────────────────── */
+.os-who-wrap{position:relative;margin-top:24px;overflow:hidden;border-radius:var(--radius)}
+
+/* ── HK Why DrftLabs slider ──────────────────────────────────── */
+.hk-why-wrap{position:relative;margin-top:24px;overflow:hidden;border-radius:var(--radius)}
+
+/* ── Shared slider dots ──────────────────────────────────────── */
+.os-dots .hk-dots 
+
+/* ── OS Who We Supply — infinite auto-scroll ────────────────────────────── */
+.os-who-wrap{position:relative;margin-top:22px;overflow:hidden}
+.os-who-wrap::before,.os-who-wrap::after{content:"";position:absolute;top:0;bottom:0;width:60px;z-index:3;pointer-events:none}
+.os-who-wrap::before{left:0;background:linear-gradient(90deg,var(--os-paper),transparent)}
+.os-who-wrap::after{right:0;background:linear-gradient(-90deg,var(--os-paper),transparent)}
+.os-who-inner{display:flex;gap:14px;padding:4px 2px 18px;
+  animation:osWhoScroll 28s linear infinite;width:max-content}
+.os-who-inner:hover{animation-play-state:paused}
+@keyframes osWhoScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── HK Why DrftLabs — infinite auto-scroll ─────────────────────────────── */
+.hk-why-wrap{position:relative;margin-top:22px;overflow:hidden}
+.hk-why-wrap::before,.hk-why-wrap::after{content:"";position:absolute;top:0;bottom:0;width:60px;z-index:3;pointer-events:none}
+.hk-why-wrap::before{left:0;background:linear-gradient(90deg,var(--hk-paper),transparent)}
+.hk-why-wrap::after{right:0;background:linear-gradient(-90deg,var(--hk-paper),transparent)}
+.hk-why-inner{display:flex;gap:14px;padding:4px 2px 18px;
+  animation:hkWhyScroll 26s linear infinite;width:max-content}
+.hk-why-inner:hover{animation-play-state:paused}
+@keyframes hkWhyScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── Why/Who cards: fixed width for scroll ──────────────────────────────── */
+.os-who-inner .os-client-card{flex:0 0 210px;min-width:210px}
+.hk-why-inner .hk-feat{flex:0 0 240px;min-width:240px}
+
+
+/* custom-solutions note */
+.custom-note{display:flex;align-items:flex-start;gap:9px;
+  background:rgba(232,108,26,.08);border:1px solid rgba(232,108,26,.28);
+  border-radius:10px;padding:10px 14px;margin-top:14px}
+.custom-note svg{flex:none;color:var(--os-soft);margin-top:1px}
+.custom-note span{font-size:.8rem;color:rgba(255,255,255,.78);font-weight:400;line-height:1.55}
+.custom-note-hk{background:rgba(8,145,178,.08);border-color:rgba(8,145,178,.28)}
+.custom-note-hk svg{color:var(--hk-soft)}
 </style>
 </head>
 <body>
@@ -677,6 +1029,365 @@ footer{background:var(--bg-deep);border-top:1px solid var(--line);padding:56px 0
     </div>
   </div>
 </section>
+
+
+<!-- ═══ OFFICE SUPPLIES & HOUSEKEEPING SECTIONS ═══ -->
+<!-- ══════════════════════════════════════════════════════════════════════════
+     OFFICE SUPPLIES — SECTION A1: HERO
+     ══════════════════════════════════════════════════════════════════════════ -->
+<section id="office-hero">
+  <div class="wrap oh-grid">
+
+    <!-- Left: copy -->
+    <div>
+      <div class="oh-tag rv">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+        Office Supplies
+      </div>
+      <h2 class="rv d1">Never run out of <strong>what keeps your office running.</strong></h2>
+      <p class="sub rv d2">Paper to stationery — office essentials supplied and replenished for corporates, factories, schools, hospitals, warehouses and institutions. One vendor, reliable delivery.</p>
+      <div class="custom-note rv d2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" width="16" height="16"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        <span>Custom solutions — we supply as per your specific requirement, brand preference and frequency.</span>
+      </div>
+      <div class="rv d3" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px">
+        <a class="btn-os btn-os-pri" href="https://wa.me/917678487800?text=Hi,%20I%20need%20office%20supplies%20for%20my%20organisation">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.7 14.1c-.2.7-1.4 1.3-1.9 1.4-.5.1-1.1.2-3.6-.8-3-1.2-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.4 1.8 2.2 1.3 1.1 2.3 1.5 2.7 1.6.3.2.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 .9c.3.2.5.3.6.4 0 .2 0 .7-.3 1Z"/></svg>
+          Get a Quote
+        </a>
+        <a class="btn-os btn-os-sec" href="tel:+917678487800">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.4 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.6 1.9Z"/></svg>
+          Call Now
+        </a>
+      </div>
+      <div class="oh-stats rv d4">
+        <div class="oh-stat"><b>500+</b><span>SKUs available</span></div>
+        <div class="oh-stat"><b>B2B</b><span>Direct supply</span></div>
+        <div class="oh-stat"><b>Pan-India</b><span>Delivery</span></div>
+      </div>
+    </div>
+
+    <!-- Right: icon grid visual -->
+    <div class="oh-visual rv d2">
+      <div class="oh-badge">✦ Office Essentials</div>
+      <div class="oh-card-main">
+
+        <div class="oh-icon-cell">
+          <div class="oh-cell-glow"></div>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e86c1a" stroke-width="1.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+          <span>A4 Paper</span>
+        </div>
+
+        <div class="oh-icon-cell">
+          <div class="oh-cell-glow"></div>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f5943a" stroke-width="1.5" stroke-linecap="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          <span>Pens & Pencils</span>
+        </div>
+
+        <div class="oh-icon-cell">
+          <div class="oh-cell-glow"></div>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e86c1a" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span>Notebooks</span>
+        </div>
+
+        <div class="oh-icon-cell">
+          <div class="oh-cell-glow"></div>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f5943a" stroke-width="1.5" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span>Sticky Notes</span>
+        </div>
+
+        <div class="oh-icon-cell">
+          <div class="oh-cell-glow"></div>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e86c1a" stroke-width="1.5" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          <span>Stapler & Clips</span>
+        </div>
+
+        <div class="oh-icon-cell">
+          <div class="oh-cell-glow"></div>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f5943a" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <span>Files & Folders</span>
+        </div>
+
+        <div class="oh-icon-cell">
+          <div class="oh-cell-glow"></div>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e86c1a" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+          <span>Desk Accessories</span>
+        </div>
+
+        <div class="oh-icon-cell">
+          <div class="oh-cell-glow"></div>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f5943a" stroke-width="1.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span>Envelopes</span>
+        </div>
+
+        <div class="oh-icon-cell">
+          <div class="oh-cell-glow"></div>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e86c1a" stroke-width="1.5" stroke-linecap="round"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg>
+          <span>Tape & Glue</span>
+        </div>
+
+      </div><!-- .oh-card-main -->
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     OFFICE SUPPLIES — SECTION A2: CATALOGUE + WHO WE SERVE
+     ══════════════════════════════════════════════════════════════════════════ -->
+<section id="office-catalogue">
+  <div class="wrap">
+
+    <span class="eyebrow-os rv">What We Supply</span>
+    <h2 class="rv d1">Everything your office <strong>needs, every month.</strong></h2>
+    <p class="sub rv d2" style="margin-bottom:0">Ordered once, delivered on schedule, invoiced cleanly.</p>
+
+    <!-- Category filter pills -->
+    <div class="os-cats rv d2">
+      <span class="os-cat-pill active">All Products</span>
+      <span class="os-cat-pill">Paper & Print</span>
+      <span class="os-cat-pill">Writing Instruments</span>
+      <span class="os-cat-pill">Filing & Storage</span>
+      <span class="os-cat-pill">Desk Essentials</span>
+      <span class="os-cat-pill">Tech Accessories</span>
+      <span class="os-cat-pill">Other Supplies</span>
+    </div>
+
+    <!-- Infinite product scroll -->
+    <div class="os-slider-wrap rv d2">
+      <div class="os-slider" id="osSlider">
+
+        <div class="os-card"><div class="os-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#e86c1a" stroke-width="1.4" stroke-linecap="round" width="72" height="72"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div class="os-card-body"><h3>A4 Copy Paper</h3><p>70 / 75 / 80 GSM, reams & cartons</p><span class="os-tag">Paper</span></div></div>
+
+        <div class="os-card"><div class="os-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#f5943a" stroke-width="1.4" stroke-linecap="round" width="72" height="72"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></div><div class="os-card-body"><h3>Ball Pens</h3><p>Blue, black, red — bulk packs</p><span class="os-tag">Writing</span></div></div>
+
+        <div class="os-card"><div class="os-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#e86c1a" stroke-width="1.4" stroke-linecap="round" width="72" height="72"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg></div><div class="os-card-body"><h3>Pencils & Erasers</h3><p>HB, 2B, colour pencils, sets</p><span class="os-tag">Writing</span></div></div>
+
+        <div class="os-card"><div class="os-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#f5943a" stroke-width="1.4" stroke-linecap="round" width="72" height="72"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><div class="os-card-body"><h3>Notebooks & Diaries</h3><p>A4, A5, hardback & softback</p><span class="os-tag">Stationery</span></div></div>
+
+        <div class="os-card"><div class="os-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#e86c1a" stroke-width="1.4" stroke-linecap="round" width="72" height="72"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div><div class="os-card-body"><h3>Files & Folders</h3><p>L-folders, document files, binders</p><span class="os-tag">Filing</span></div></div>
+
+        <div class="os-card"><div class="os-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#f5943a" stroke-width="1.4" stroke-linecap="round" width="72" height="72"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="os-card-body"><h3>Sticky Notes & Flags</h3><p>Post-it style, multiple sizes</p><span class="os-tag">Desk</span></div></div>
+
+        <div class="os-card"><div class="os-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#e86c1a" stroke-width="1.4" stroke-linecap="round" width="72" height="72"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="os-card-body"><h3>Envelopes</h3><p>A4, A5, C4, C5, windowed & plain</p><span class="os-tag">Paper</span></div></div>
+
+        <div class="os-card"><div class="os-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#f5943a" stroke-width="1.4" stroke-linecap="round" width="72" height="72"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div><div class="os-card-body"><h3>Stapler & Staples</h3><p>Desktop & heavy duty</p><span class="os-tag">Desk</span></div></div>
+
+        <div class="os-card"><div class="os-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#e86c1a" stroke-width="1.4" stroke-linecap="round" width="72" height="72"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="os-card-body"><h3>Correction Fluid & Tape</h3><p>Whitener, roller correction tape</p><span class="os-tag">Desk</span></div></div>
+
+        <div class="os-card"><div class="os-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#f5943a" stroke-width="1.4" stroke-linecap="round" width="72" height="72"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg></div><div class="os-card-body"><h3>Markers & Highlighters</h3><p>Permanent, whiteboard, fluorescent</p><span class="os-tag">Writing</span></div></div>
+
+        <div class="os-card"><div class="os-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#e86c1a" stroke-width="1.4" stroke-linecap="round" width="72" height="72"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><div class="os-card-body"><h3>Printer Cartridges</h3><p>HP, Canon, Epson, Brother</p><span class="os-tag">Print</span></div></div>
+
+        <div class="os-card"><div class="os-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#f5943a" stroke-width="1.4" stroke-linecap="round" width="72" height="72"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/></svg></div><div class="os-card-body"><h3>Packaging Supplies</h3><p>Tape, bubble wrap, cartons</p><span class="os-tag">Packing</span></div></div>
+
+        <div class="os-card"><div class="os-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#e86c1a" stroke-width="1.4" stroke-linecap="round" width="58" height="58"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><div class="os-card-body"><h3>Sanitizers & Wipes</h3><p>Hand sanitizer, surface wipes</p><span class="os-tag">Other</span></div></div>
+
+        <div class="os-card"><div class="os-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#f5943a" stroke-width="1.4" stroke-linecap="round" width="58" height="58"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div><div class="os-card-body"><h3>Pantry & Breakroom</h3><p>Tea, coffee, sugar, disposable cups</p><span class="os-tag">Other</span></div></div>
+
+        <div class="os-card"><div class="os-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#e86c1a" stroke-width="1.4" stroke-linecap="round" width="58" height="58"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div><div class="os-card-body"><h3>ID Cards & Lanyards</h3><p>Printed ID cards, badge holders, lanyards</p><span class="os-tag">Other</span></div></div>
+
+        <div class="os-card"><div class="os-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#f5943a" stroke-width="1.4" stroke-linecap="round" width="58" height="58"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><polyline points="14 2 14 8 20 8"/><path d="m9 15 2 2 4-4"/></svg></div><div class="os-card-body"><h3>Visitor Registers & Forms</h3><p>Log books, attendance, gate registers</p><span class="os-tag">Other</span></div></div>
+
+        <div class="os-card"><div class="os-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#e86c1a" stroke-width="1.4" stroke-linecap="round" width="58" height="58"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="os-card-body"><h3>Printed Stationery</h3><p>Letterheads, invoice books, forms</p><span class="os-tag">Other</span></div></div>
+
+        <div class="os-card"><div class="os-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#f5943a" stroke-width="1.4" stroke-linecap="round" width="58" height="58"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></div><div class="os-card-body"><h3>Computer Accessories</h3><p>Mouse, keyboard, USB hubs, cables</p><span class="os-tag">Other</span></div></div>
+
+      </div><!-- #osSlider: JS will duplicate -->
+    </div>
+
+    <!-- Who We Serve — Slider -->
+    <div style="margin-top:52px">
+      <span class="eyebrow-os rv">Who We Supply</span>
+      <h2 class="rv d1" style="margin-bottom:8px">Supplying offices <strong>of every kind.</strong></h2>
+      <p class="sub rv d2" style="margin-bottom:0;color:#56606e">From startups to large institutions — one vendor for all your stationery needs.</p>
+      <div class="os-who-wrap rv d2">
+        <div class="os-who-inner" id="osWhoInner">
+          <div class="os-client-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/><path d="M12 12v4"/><path d="M10 14h4"/></svg><h3>Corporate Offices</h3><p>Monthly supply contracts. GST invoicing, credit terms.</p></div>
+          <div class="os-client-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><h3>Schools & Colleges</h3><p>Bulk stationery for classrooms, labs and admin.</p></div>
+          <div class="os-client-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><h3>Hospitals & Clinics</h3><p>Prescription pads, forms, admin stationery.</p></div>
+          <div class="os-client-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 20h20M4 20V10l8-6 8 6v10"/><rect x="9" y="14" width="6" height="6"/></svg><h3>Factories & Warehouses</h3><p>Forms, labels, logbooks and packaging at volume.</p></div>
+          <div class="os-client-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg><h3>Government Offices</h3><p>GeM-compatible supply. Formal quotations provided.</p></div>
+          <div class="os-client-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><h3>Hotels & Restaurants</h3><p>Guest stationery, order pads and receipt books.</p></div>
+          <div class="os-client-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><h3>Manufacturing Units</h3><p>Paper, forms, labels and inspection sheets at scale.</p></div>
+          <div class="os-client-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><h3>NGOs & Institutions</h3><p>Budget supply with documentation for audits.</p></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- OS CTA Strip -->
+<div class="cta-strip cta-strip-os rv">
+  <div class="wrap">
+    <h3>Need office supplies <strong>delivered on schedule?</strong></h3>
+    <p>Share your requirement and we'll set up a regular supply contract.</p>
+    <div class="cta-strip-btns">
+      <a class="btn-os btn-os-pri" href="https://wa.me/917678487800?text=Hi,%20I%20need%20office%20supplies%20for%20my%20organisation">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.7 14.1c-.2.7-1.4 1.3-1.9 1.4-.5.1-1.1.2-3.6-.8-3-1.2-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.4 1.8 2.2 1.3 1.1 2.3 1.5 2.7 1.6.3.2.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 .9c.3.2.5.3.6.4 0 .2 0 .7-.3 1Z"/></svg>
+        WhatsApp for a Quote
+      </a>
+      <a class="btn-os btn-os-sec" href="tel:+917678487800">Call +91 76784 87800</a>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     HOUSEKEEPING SUPPLIES — SECTION B1: HERO
+     ══════════════════════════════════════════════════════════════════════════ -->
+<section id="hk-hero">
+  <div class="wrap hk-grid">
+
+    <!-- Left: copy -->
+    <div>
+      <div class="hk-tag rv">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" width="13" height="13"><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/><path d="M3 9V7a2 2 0 0 1 2-2h2"/><path d="M21 9V7a2 2 0 0 0-2-2h-2"/><path d="M9 5V3"/><path d="M15 5V3"/></svg>
+        Housekeeping Supplies
+      </div>
+      <h2 class="rv d1">Keep every space <strong>clean, safe and stocked.</strong></h2>
+      <p class="sub rv d2">Housekeeping and sanitation essentials for hotels, hospitals, factories, offices, schools and institutions. Floor cleaners, sanitizers, PPE, tissue rolls and more — one vendor, one invoice.</p>
+      <div class="custom-note custom-note-hk rv d2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" width="16" height="16"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        <span>Custom solutions — supply list, brands, pack sizes and delivery frequency tailored to your facility.</span>
+      </div>
+      <div class="rv d3" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px">
+        <a class="btn-hk btn-hk-pri" href="https://wa.me/917678487800?text=Hi,%20I%20need%20housekeeping%20supplies%20for%20my%20facility">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.7 14.1c-.2.7-1.4 1.3-1.9 1.4-.5.1-1.1.2-3.6-.8-3-1.2-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.4 1.8 2.2 1.3 1.1 2.3 1.5 2.7 1.6.3.2.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 .9c.3.2.5.3.6.4 0 .2 0 .7-.3 1Z"/></svg>
+          Get a Quote
+        </a>
+        <a class="btn-hk btn-hk-sec" href="tel:+917678487800">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.4 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.6 1.9Z"/></svg>
+          Call Now
+        </a>
+      </div>
+      <div class="hk-stats rv d4">
+        <div class="hk-stat"><b>200+</b><span>Products stocked</span></div>
+        <div class="hk-stat"><b>Bulk</b><span>Pricing available</span></div>
+        <div class="hk-stat"><b>Monthly</b><span>Supply contracts</span></div>
+      </div>
+    </div>
+
+    <!-- Right: animated ring diagram -->
+    <div class="hk-visual rv d2">
+      <div class="hk-rings">
+        <div class="hk-ring hk-ring-1"></div>
+        <div class="hk-ring hk-ring-2"></div>
+        <div class="hk-ring hk-ring-3"></div>
+        <div class="hk-center">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <!-- Orbit nodes -->
+        <div class="hk-node hk-n1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" width="24" height="24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+          <span class="hk-node-label">Cleaners</span>
+        </div>
+        <div class="hk-node hk-n2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" width="24" height="24"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/><path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/></svg>
+          <span class="hk-node-label">Sanitizers</span>
+        </div>
+        <div class="hk-node hk-n3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" width="24" height="24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v11m0 0H5a2 2 0 0 1-2-2V9m6 5h10a2 2 0 0 0 2-2V9m0 0H3"/></svg>
+          <span class="hk-node-label">Tissue & Rolls</span>
+        </div>
+        <div class="hk-node hk-n4">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" width="24" height="24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          <span class="hk-node-label">PPE & Gloves</span>
+        </div>
+        <div class="hk-node hk-n5">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" width="24" height="24"><line x1="12" y1="22" x2="12" y2="11"/><path d="M17 5.45A3 3 0 0 0 12 3a3 3 0 0 0-5 2.45C7 8 8.5 9.5 12 11c3.5-1.5 5-3 5-5.55z"/><path d="M5 8c0 6 7 14 7 14S19 14 19 8"/></svg>
+          <span class="hk-node-label">Mops & Brooms</span>
+        </div>
+        <div class="hk-node hk-n6">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" width="24" height="24"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"/><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"/></svg>
+          <span class="hk-node-label">Toilet Care</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     HOUSEKEEPING SUPPLIES — SECTION B2: CATALOGUE + FEATURES
+     ══════════════════════════════════════════════════════════════════════════ -->
+<section id="hk-catalogue">
+  <div class="wrap">
+
+    <span class="eyebrow-hk rv">What We Supply</span>
+    <h2 class="rv d1">A complete range of <strong>cleaning & sanitation essentials.</strong></h2>
+    <p class="sub rv d2" style="color:#3d5a62">From industrial cleaners to daily tissue rolls — bulk supply, consistent quality, scheduled delivery.</p>
+
+    <!-- Infinite product scroll -->
+    <div class="hk-slider-wrap">
+      <div class="hk-slider" id="hkSlider">
+
+        <div class="hk-card"><div class="hk-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="1.4" stroke-linecap="round" width="72" height="72"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div><div class="hk-card-body"><h3>Floor Cleaners</h3><p>Phenyl, disinfectants, tile cleaners</p><span class="hk-tag-pill">Cleaning</span></div></div>
+
+        <div class="hk-card"><div class="hk-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="1.4" stroke-linecap="round" width="72" height="72"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/><path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/></svg></div><div class="hk-card-body"><h3>Hand Sanitizers</h3><p>500ml, 1L, 5L bulk dispensers</p><span class="hk-tag-pill">Hygiene</span></div></div>
+
+        <div class="hk-card"><div class="hk-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="1.4" stroke-linecap="round" width="72" height="72"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v11m0 0H5a2 2 0 0 1-2-2V9m6 5h10a2 2 0 0 0 2-2V9m0 0H3"/></svg></div><div class="hk-card-body"><h3>Tissue Paper</h3><p>Facial, kitchen & multi-fold</p><span class="hk-tag-pill">Consumable</span></div></div>
+
+        <div class="hk-card"><div class="hk-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="1.4" stroke-linecap="round" width="72" height="72"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="9"/></svg></div><div class="hk-card-body"><h3>Toilet Rolls</h3><p>2-ply, jumbo rolls, coreless</p><span class="hk-tag-pill">Consumable</span></div></div>
+
+        <div class="hk-card"><div class="hk-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="1.4" stroke-linecap="round" width="72" height="72"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div><div class="hk-card-body"><h3>Dishwash Liquid</h3><p>Commercial & regular grade</p><span class="hk-tag-pill">Cleaning</span></div></div>
+
+        <div class="hk-card"><div class="hk-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="1.4" stroke-linecap="round" width="72" height="72"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/></svg></div><div class="hk-card-body"><h3>Rubber Gloves</h3><p>Latex & nitrile, all sizes</p><span class="hk-tag-pill">PPE</span></div></div>
+
+        <div class="hk-card"><div class="hk-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="1.4" stroke-linecap="round" width="72" height="72"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"/><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"/></svg></div><div class="hk-card-body"><h3>Face Masks</h3><p>3-ply, N95, reusable cloth</p><span class="hk-tag-pill">PPE</span></div></div>
+
+        <div class="hk-card"><div class="hk-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="1.4" stroke-linecap="round" width="72" height="72"><line x1="12" y1="22" x2="12" y2="11"/><path d="M17 5.45A3 3 0 0 0 12 3a3 3 0 0 0-5 2.45C7 8 8.5 9.5 12 11c3.5-1.5 5-3 5-5.55z"/></svg></div><div class="hk-card-body"><h3>Mops & Brooms</h3><p>Flat mops, cotton mops, brooms</p><span class="hk-tag-pill">Equipment</span></div></div>
+
+        <div class="hk-card"><div class="hk-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="1.4" stroke-linecap="round" width="72" height="72"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v11"/><rect x="2" y="9" width="20" height="12" rx="2"/></svg></div><div class="hk-card-body"><h3>Toilet Cleaner</h3><p>Acid-based, harpic-type, bulk cans</p><span class="hk-tag-pill">Cleaning</span></div></div>
+
+        <div class="hk-card"><div class="hk-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="1.4" stroke-linecap="round" width="72" height="72"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div><div class="hk-card-body"><h3>Air Fresheners</h3><p>Spray, gel, refill cans</p><span class="hk-tag-pill">Fragrance</span></div></div>
+
+        <div class="hk-card"><div class="hk-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="1.4" stroke-linecap="round" width="72" height="72"><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/><path d="M3 9V7a2 2 0 0 1 2-2h2m4 0h2m4 0h2a2 2 0 0 1 2 2v2"/></svg></div><div class="hk-card-body"><h3>Dustbins & Bags</h3><p>Office bins, garbage bags, liners</p><span class="hk-tag-pill">Waste</span></div></div>
+
+        <div class="hk-card"><div class="hk-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="1.4" stroke-linecap="round" width="72" height="72"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01"/></svg></div><div class="hk-card-body"><h3>Cleaning Brushes</h3><p>Toilet brushes, scrubs, microfibre</p><span class="hk-tag-pill">Equipment</span></div></div>
+
+      </div><!-- #hkSlider: JS will duplicate -->
+    </div>
+
+    <!-- Why DrftLabs — Slider 2 at a time -->
+    <div style="margin-top:52px">
+      <span class="eyebrow-hk rv">Why DrftLabs</span>
+      <h2 class="rv d1" style="color:var(--ink)">Reliable supply, <strong>zero hassle.</strong></h2>
+      <div class="hk-why-wrap rv d2">
+        <div class="hk-why-inner" id="hkWhyInner">
+          <div class="hk-feat"><div class="hk-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Consistent Quality</h3><p>Verified brands. Same quality every order, no substitutions without notice.</p></div>
+          <div class="hk-feat"><div class="hk-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><h3>Scheduled Delivery</h3><p>Monthly or weekly replenishment. Never run short.</p></div>
+          <div class="hk-feat"><div class="hk-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg></div><h3>Single GST Invoice</h3><p>All products on one invoice — simpler procurement, faster approvals.</p></div>
+          <div class="hk-feat"><div class="hk-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><h3>Dedicated Manager</h3><p>One contact. Reorder by WhatsApp in seconds, no forms.</p></div>
+          <div class="hk-feat"><div class="hk-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Bulk Pricing</h3><p>Volume pricing for regular customers. More you order, lower the rate.</p></div>
+          <div class="hk-feat"><div class="hk-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 20h20M4 20V10l8-6 8 6v10"/></svg></div><h3>Any Facility</h3><p>Hotels, hospitals, factories, schools, government offices — we know your needs.</p></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HK CTA Strip -->
+<div class="cta-strip cta-strip-hk rv">
+  <div class="wrap">
+    <h3>Ready to simplify your <strong>housekeeping supply chain?</strong></h3>
+    <p>Share your facility type and requirements — we'll send a supply proposal.</p>
+    <div class="cta-strip-btns">
+      <a class="btn-hk btn-hk-pri" href="https://wa.me/917678487800?text=Hi,%20I%20need%20housekeeping%20supplies%20for%20my%20facility">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.7 14.1c-.2.7-1.4 1.3-1.9 1.4-.5.1-1.1.2-3.6-.8-3-1.2-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.4 1.8 2.2 1.3 1.1 2.3 1.5 2.7 1.6.3.2.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 .9c.3.2.5.3.6.4 0 .2 0 .7-.3 1Z"/></svg>
+        WhatsApp for a Quote
+      </a>
+      <a class="btn-hk btn-hk-sec" href="tel:+917678487800">Call +91 76784 87800</a>
+    </div>
+  </div>
+</div>
 
 <!-- ============ TESTIMONIALS ============ -->
 <section id="testimonials">
